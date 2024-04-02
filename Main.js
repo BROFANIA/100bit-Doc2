@@ -158,17 +158,17 @@ function openFile(f) {
 	fileInput.remove()
 }
 
-function binify() {
-    prefix = new Uint16Array(2);
-    prefix[0] = ((61<<8)+10),
+s.save = function() {
+    let prefix = new Uint16Array(2);
+    prefix[0] = (61<<8)+10,
     prefix[1] = noData.length;
-    enditCounts = (s.grandNo[3]);
+    let enditCounts = s.grandNo[3];
     editCounts.unshift(0)
     editCounts = new Uint8Array(editCounts)
-    Users = s.grandNo[2].join("\n");
+    let Users = s.grandNo[2].join("\n");
     Users.unshift("");
-    dotPlacements = new Uint16Array(s.grandNo[1])
-    saveFile(new Blob([prefix,editCounts,Users,"\n",dotPlacements],{type:"application/octet-stream"}),"100bitBin.bin")
+    let dotPlacements = new Uint16Array(s.grandNo[1]);
+    saveFile(new Blob([prefix,editCounts,Users,"\n",dotPlacements],{type:"application/octet-stream"}),"100Bit.bin")
 }
 
 s.sheet = []
@@ -190,7 +190,7 @@ s.grandNo.gen = function() {
     }
 }
 
-//To use this type openFile(debinify)
+//To use this type openFile(deBinify)
 function deBinify(b) {
     l = new DataView(b)
     get16 = (a) => {return l.getUint16(a,true)};
